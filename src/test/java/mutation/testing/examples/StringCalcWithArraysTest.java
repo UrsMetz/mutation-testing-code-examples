@@ -11,4 +11,10 @@ public class StringCalcWithArraysTest {
         int result = new StringCalcWithArrays().add("0,0");
         assertThat(result, is(0));
     }
+
+    @Test
+    public void addTwoNumbers() throws Exception {
+        int result = new StringCalcWithArrays().add("1,0");
+        assertThat(result, is(1));
+    }
 }
