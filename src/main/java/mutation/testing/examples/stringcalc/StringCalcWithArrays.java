@@ -1,4 +1,4 @@
-package mutation.testing.examples;
+package mutation.testing.examples.stringcalc;
 
 public class StringCalcWithArrays {
     public int add(String listOfNumbers) {

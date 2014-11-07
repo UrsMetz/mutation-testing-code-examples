@@ -1,4 +1,4 @@
-package mutation.testing.examples;
+package mutation.testing.examples.stringcalc;
 
 import org.junit.Test;
 
