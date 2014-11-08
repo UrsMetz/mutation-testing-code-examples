@@ -15,12 +15,11 @@ public class OrderProcessor {
     }
 
     public String processOrder(OrderArticle article, int quantity) {
-        String name = article.getName();
-        billingSystem.bill(makeUpper(name), article.getPrice(), quantity);
+        billingSystem.bill(makeUpper(article.getName()), article.getPrice(), quantity);
         return orderNumberCreator.createOrderNumber();
     }
 
-    private String makeUpper(String name) {
+    private static String makeUpper(String name) {
         return name.toUpperCase();
     }
 
