@@ -15,7 +15,8 @@ public class OrderProcessor {
     }
 
     public String processOrder(OrderArticle article, int quantity) {
-        billingSystem.bill(article.getName(), article.getPrice(), quantity);
+        billingSystem.bill(article.getName().toUpperCase(), article.getPrice(), quantity);
         return orderNumberCreator.createOrderNumber();
     }
+
 }

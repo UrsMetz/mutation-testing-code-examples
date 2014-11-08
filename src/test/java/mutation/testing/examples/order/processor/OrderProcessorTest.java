@@ -14,7 +14,7 @@ public class OrderProcessorTest {
     public void processesOrder() throws Exception {
         OrderProcessor orderProcessor = new OrderProcessor(new BillingSystemDummy(), new OrderNumberCreatorStub());
 
-        String returnedOrderNumber = orderProcessor.processOrder(new OrderArticle(), 1);
+        String returnedOrderNumber = orderProcessor.processOrder(new OrderArticle("ARTICLE"), 1);
         assertThat(returnedOrderNumber, is(ORDER_NUMBER));
     }
 
