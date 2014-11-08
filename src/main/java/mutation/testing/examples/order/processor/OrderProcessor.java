@@ -15,8 +15,13 @@ public class OrderProcessor {
     }
 
     public String processOrder(OrderArticle article, int quantity) {
-        billingSystem.bill(article.getName().toUpperCase(), article.getPrice(), quantity);
+        String name = article.getName();
+        billingSystem.bill(makeUpper(name), article.getPrice(), quantity);
         return orderNumberCreator.createOrderNumber();
+    }
+
+    private String makeUpper(String name) {
+        return name.toUpperCase();
     }
 
 }
