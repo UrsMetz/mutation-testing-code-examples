@@ -11,7 +11,8 @@ import static org.hamcrest.Matchers.is;
 public class OrderProcessorTest {
     private static final String ORDER_NUMBER = "O-123";
     public static final String ARTICLE_NAME = "ARTICLE";
-    private final OrderArticle article = new OrderArticle(ARTICLE_NAME);
+    private static final double ARTICLE_PRICE = 33.56;
+    private final OrderArticle article = new OrderArticle(ARTICLE_NAME, ARTICLE_PRICE);
 
     @Test
     public void processesOrder() throws Exception {
@@ -28,6 +29,7 @@ public class OrderProcessorTest {
 
         orderProcessor.processOrder(article, 1);
         assertThat(billingSystem.getNameUserInCall(), is(ARTICLE_NAME));
+        assertThat(billingSystem.getPriceUserInCall(), is(ARTICLE_PRICE));
     }
 
     private static class OrderNumberCreatorStub implements OrderNumberCreator {
@@ -39,14 +41,20 @@ public class OrderProcessorTest {
 
     private class BillingSystemMock implements BillingSystem {
         private String nameUserInCall;
+        private double priceUserInCall;
 
         @Override
         public void bill(String name, double price, int quantity) {
             nameUserInCall = name;
+            priceUserInCall = price;
         }
 
         public String getNameUserInCall() {
             return nameUserInCall;
+        }
+
+        public double getPriceUserInCall() {
+            return priceUserInCall;
         }
     }
 }
