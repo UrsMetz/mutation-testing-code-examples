@@ -3,6 +3,7 @@ package mutation.testing.examples.order.processor;
 import mutation.testing.examples.order.processor.article.OrderArticle;
 import mutation.testing.examples.order.processor.billing.BillingSystem;
 import mutation.testing.examples.order.processor.ordernumber.OrderNumberCreator;
+import mutation.testing.examples.util.StringUtil;
 
 public class OrderProcessor {
 
@@ -15,12 +16,8 @@ public class OrderProcessor {
     }
 
     public String processOrder(OrderArticle article, int quantity) {
-        billingSystem.bill(makeUpper(article.getName()), article.getPrice(), quantity);
+        billingSystem.bill(StringUtil.makeUpper(article.getName()), article.getPrice(), quantity);
         return orderNumberCreator.createOrderNumber();
-    }
-
-    private static String makeUpper(String name) {
-        return name.toUpperCase();
     }
 
 }
