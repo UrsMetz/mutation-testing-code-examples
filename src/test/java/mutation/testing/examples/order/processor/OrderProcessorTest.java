@@ -12,13 +12,14 @@ public class OrderProcessorTest {
     private static final String ORDER_NUMBER = "O-123";
     public static final String ARTICLE_NAME = "ARTICLE";
     private static final double ARTICLE_PRICE = 33.56;
+    public static final int QUANTITY = 1;
     private final OrderArticle article = new OrderArticle(ARTICLE_NAME, ARTICLE_PRICE);
 
     @Test
     public void processesOrder() throws Exception {
         OrderProcessor orderProcessor = new OrderProcessor(new BillingSystemDummy(), new OrderNumberCreatorStub());
 
-        String returnedOrderNumber = orderProcessor.processOrder(article, 1);
+        String returnedOrderNumber = orderProcessor.processOrder(article, QUANTITY);
         assertThat(returnedOrderNumber, is(ORDER_NUMBER));
     }
 
@@ -27,7 +28,7 @@ public class OrderProcessorTest {
         BillingSystemMock billingSystem = new BillingSystemMock();
         OrderProcessor orderProcessor = new OrderProcessor(billingSystem, new OrderNumberCreatorStub());
 
-        orderProcessor.processOrder(article, 1);
+        orderProcessor.processOrder(article, QUANTITY);
         assertThat(billingSystem.getNameUserInCall(), is(ARTICLE_NAME));
         assertThat(billingSystem.getPriceUserInCall(), is(ARTICLE_PRICE));
     }
