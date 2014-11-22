@@ -29,6 +29,7 @@
                     <mutators>
                         <mutator>ALL</mutator>
                     </mutators>
+                    <timestampedReports>false</timestampedReports>
                 </configuration>
             </plugin>
         </plugins>
