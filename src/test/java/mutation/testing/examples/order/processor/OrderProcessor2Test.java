@@ -3,6 +3,7 @@ package mutation.testing.examples.order.processor;
 import mutation.testing.examples.order.processor.article.OrderArticle;
 import mutation.testing.examples.order.processor.billing.BillingSystem;
 import mutation.testing.examples.order.processor.ordernumber.OrderNumberCreator;
+import mutation.testing.examples.order.processor.testdouble.BillingSystemDummy;
 import org.junit.Ignore;
 import org.junit.Test;
 
