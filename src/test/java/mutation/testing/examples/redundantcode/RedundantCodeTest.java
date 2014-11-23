@@ -10,26 +10,20 @@ public class RedundantCodeTest {
     private final RedundantCode underTest = new RedundantCode();
 
     @Test
-    public void whenOnlyOneStringIsGivenItReturnsThisString() throws Exception {
-        String result = underTest.findSpecialOne("1");
-        assertThat(result, is("1"));
+    public void onlyOneWord() throws Exception {
+        String result = underTest.findWordThatComesAlphabeticallyFirst(new RedundantCode.WordList("word"));
+        assertThat(result, is("word"));
     }
 
     @Test
-    public void findOne1() throws Exception {
-        String result = underTest.findSpecialOne("1", "2");
-        assertThat(result, is("1"));
+    public void twoWordAlreadyInTheRightOrder() throws Exception {
+        String result = underTest.findWordThatComesAlphabeticallyFirst(new RedundantCode.WordList("abc", "bcd"));
+        assertThat(result, is("abc"));
     }
 
     @Test
-    public void findOne2() throws Exception {
-        String result = underTest.findSpecialOne("3", "1", "2");
-        assertThat(result, is("1"));
-    }
-
-    @Test
-    public void findOne10() throws Exception {
-        String result = underTest.findSpecialOne("c", "z", "a");
-        assertThat(result, is("a"));
+    public void threeWordsInRandomOrder() throws Exception {
+        String result = underTest.findWordThatComesAlphabeticallyFirst(new RedundantCode.WordList("zoo", "albatross", "bird"));
+        assertThat(result, is("albatross"));
     }
 }

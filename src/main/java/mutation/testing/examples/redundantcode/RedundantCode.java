@@ -1,21 +1,30 @@
 package mutation.testing.examples.redundantcode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import static java.util.Arrays.asList;
 
 public class RedundantCode {
-    public String findSpecialOne(String... args) {
-        Set<String> strings = asSortedSet(args);
-
-        ArrayList<String> list = new ArrayList<>(strings);
+    public String findWordThatComesAlphabeticallyFirst(WordList wordList) {
+        ArrayList<String> list = new ArrayList<>(wordList.asSet());
 
         Collections.sort(list);
 
         return list.get(0);
     }
 
-    private SortedSet<String> asSortedSet(String[] args) {
-        return new TreeSet<>(asList(args));
+    static class WordList {
+        private final String[] args;
+
+        WordList(String... args) {
+            this.args = args;
+        }
+
+        private SortedSet<String> asSet() {
+            return new TreeSet<>(asList(this.args));
+        }
     }
 }
