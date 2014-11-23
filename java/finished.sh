@@ -1,1 +1,1 @@
-notify-send "mvn fertig"
+notify-send "finished"
