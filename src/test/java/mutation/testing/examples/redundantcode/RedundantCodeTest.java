@@ -1,5 +1,6 @@
 package mutation.testing.examples.redundantcode;
 
+import mutation.testing.examples.redundantcode.wordlist.WordList;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -11,19 +12,19 @@ public class RedundantCodeTest {
 
     @Test
     public void onlyOneWord() throws Exception {
-        String result = underTest.findWordThatComesAlphabeticallyFirst(new RedundantCode.WordList("word"));
+        String result = underTest.findWordThatComesAlphabeticallyFirst(new WordList("word"));
         assertThat(result, is("word"));
     }
 
     @Test
     public void twoWordAlreadyInTheRightOrder() throws Exception {
-        String result = underTest.findWordThatComesAlphabeticallyFirst(new RedundantCode.WordList("abc", "bcd"));
+        String result = underTest.findWordThatComesAlphabeticallyFirst(new WordList("abc", "bcd"));
         assertThat(result, is("abc"));
     }
 
     @Test
     public void threeWordsInRandomOrder() throws Exception {
-        String result = underTest.findWordThatComesAlphabeticallyFirst(new RedundantCode.WordList("zoo", "albatross", "bird"));
+        String result = underTest.findWordThatComesAlphabeticallyFirst(new WordList("zoo", "albatross", "bird"));
         assertThat(result, is("albatross"));
     }
 }
