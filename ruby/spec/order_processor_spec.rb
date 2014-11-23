@@ -7,7 +7,8 @@ RSpec.describe 'OrderProcessor' do
   ARTICLE_NAME = 'name'
   let(:billing_system) { double('billing system') }
   let(:order_number_provider) { double('order number provider') }
-  let(:article) { OrderArticle.new(ARTICLE_NAME, 13.24) }
+  ARTICLE_PRICE = 13.24
+  let(:article) { OrderArticle.new(ARTICLE_NAME, ARTICLE_PRICE) }
 
   it 'should return created order number' do
     expect(billing_system).to receive(:bill).with(anything, anything, anything)
@@ -19,8 +20,8 @@ RSpec.describe 'OrderProcessor' do
     expect(order_number).to eql ORDER_NUMBER
   end
 
-  xit 'should notify billing system' do
-    expect(billing_system).to receive(:bill).with(ARTICLE_NAME, 13.24, QUANTITY)
+  it 'should notify billing system' do
+    expect(billing_system).to receive(:bill).with(ARTICLE_NAME, ARTICLE_PRICE, QUANTITY)
     order_number_provider.as_null_object
 
     order_processor = OrderProcessor.new(billing_system, order_number_provider)
