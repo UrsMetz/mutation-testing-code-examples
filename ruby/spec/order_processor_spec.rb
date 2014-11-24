@@ -11,7 +11,7 @@ RSpec.describe 'OrderProcessor' do
   let(:article) { OrderArticle.new(ARTICLE_NAME, ARTICLE_PRICE) }
 
   it 'should return created order number' do
-    expect(billing_system).to receive(:bill).with(anything, anything, anything)
+    billing_system.as_null_object
     expect(order_number_provider).to receive(:create_order_number) { ORDER_NUMBER }
 
     order_processor = OrderProcessor.new(billing_system, order_number_provider)
