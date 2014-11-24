@@ -20,11 +20,11 @@ RSpec.describe 'OrderProcessor' do
     expect(order_number).to eql ORDER_NUMBER
   end
 
-  xit 'should notify billing system' do
-    expect(billing_system).to receive(:bill).with(ARTICLE_NAME, ARTICLE_PRICE, QUANTITY)
-    order_number_provider.as_null_object
-
-    order_processor = OrderProcessor.new(billing_system, order_number_provider)
-    order_processor.process_order(article, QUANTITY)
-  end
+  # it 'should notify billing system' do
+  #   expect(billing_system).to receive(:bill).with(ARTICLE_NAME, ARTICLE_PRICE, QUANTITY)
+  #   order_number_provider.as_null_object
+  #
+  #   order_processor = OrderProcessor.new(billing_system, order_number_provider)
+  #   order_processor.process_order(article, QUANTITY)
+  # end
 end
