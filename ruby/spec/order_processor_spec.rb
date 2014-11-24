@@ -5,26 +5,44 @@ RSpec.describe 'OrderProcessor' do
   ORDER_NUMBER = 42
   QUANTITY = 1
   ARTICLE_NAME = 'name'
-  let(:billing_system) { double('billing system') }
-  let(:order_number_provider) { double('order number provider') }
   ARTICLE_PRICE = 13.24
   let(:article) { OrderArticle.new(ARTICLE_NAME, ARTICLE_PRICE) }
 
   it 'should return created order number' do
-    billing_system.as_null_object
-    expect(order_number_provider).to receive(:create_order_number).and_return(ORDER_NUMBER)
-
-    order_processor = OrderProcessor.new(billing_system, order_number_provider)
+    order_processor = OrderProcessor.new(BillingSystemDummy.new, OrderNumberProviderStub.new)
 
     order_number = order_processor.process_order(article, QUANTITY)
-    expect(order_number).to eql ORDER_NUMBER
+    expect(order_number).to eq ORDER_NUMBER
   end
 
   # it 'should notify billing system' do
-  #   expect(billing_system).to receive(:bill).with(ARTICLE_NAME, ARTICLE_PRICE, QUANTITY)
-  #   order_number_provider.as_null_object
-  #
-  #   order_processor = OrderProcessor.new(billing_system, order_number_provider)
+  #   billing_system_mock = BillingSystemMock.new
+  #   order_processor = OrderProcessor.new(billing_system_mock, OrderNumberProviderStub.new)
   #   order_processor.process_order(article, QUANTITY)
+  #
+  #   expect(billing_system_mock.article_name_used).to eq ARTICLE_NAME
+  #   expect(billing_system_mock.article_price_used).to eq ARTICLE_PRICE
+  #   expect(billing_system_mock.quantity_used).to eq QUANTITY
   # end
+
+  class OrderNumberProviderStub
+    def create_order_number
+      ORDER_NUMBER
+    end
+  end
+
+  class BillingSystemDummy
+    def bill(article_name, article_price, quantity)
+      # do nothing
+    end
+  end
+
+  class BillingSystemMock
+    attr_reader :article_name_used, :article_price_used, :quantity_used
+    def bill(article_name, article_price, quantity)
+      @article_name_used = article_name
+      @article_price_used = article_price
+      @quantity_used = quantity
+    end
+  end
 end
