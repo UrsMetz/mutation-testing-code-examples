@@ -10,13 +10,15 @@ public class OrderProcessor {
     private BillingSystem billingSystem;
     private OrderNumberCreator orderNumberCreator;
 
-    public OrderProcessor(BillingSystem billingSystem, OrderNumberCreator orderNumberCreator) {
+    public OrderProcessor(BillingSystem billingSystem,
+                          OrderNumberCreator orderNumberCreator) {
         this.billingSystem = billingSystem;
         this.orderNumberCreator = orderNumberCreator;
     }
 
     public String processOrder(OrderArticle article, int quantity) {
-        billingSystem.bill(StringUtil.makeUpper(article.getName()), article.getPrice(), quantity);
+        billingSystem.bill(StringUtil.makeUpper(article.getName()),
+                article.getPrice(), quantity);
         return orderNumberCreator.createOrderNumber();
     }
 
