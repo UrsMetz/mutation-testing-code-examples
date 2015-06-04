@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
-#ruby-gemset=mutation-testing-vortrag-ruby-code
-gem 'rspec', :require => 'spec'
+ruby '2.1.5'
+gem 'rspec'
 gem 'mutant'
 gem 'mutant-rspec'
