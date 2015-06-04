@@ -39,6 +39,7 @@ RSpec.describe 'OrderProcessor' do
 
   class BillingSystemMock
     attr_reader :article_name_used, :article_price_used, :quantity_used
+
     def bill(article_name, article_price, quantity)
       @article_name_used = article_name
       @article_price_used = article_price
