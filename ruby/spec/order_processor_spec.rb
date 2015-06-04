@@ -15,15 +15,15 @@ RSpec.describe 'OrderProcessor' do
     expect(order_number).to eq ORDER_NUMBER
   end
 
-  # it 'should notify billing system' do
-  #   billing_system_mock = BillingSystemMock.new
-  #   order_processor = OrderProcessor.new(billing_system_mock, OrderNumberProviderStub.new)
-  #   order_processor.process_order(article, QUANTITY)
-  #
-  #   expect(billing_system_mock.article_name_used).to eq ARTICLE_NAME
-  #   expect(billing_system_mock.article_price_used).to eq ARTICLE_PRICE
-  #   expect(billing_system_mock.quantity_used).to eq QUANTITY
-  # end
+  xit 'should notify billing system' do
+    billing_system_mock = BillingSystemMock.new
+    order_processor = OrderProcessor.new(billing_system_mock, OrderNumberProviderStub.new)
+    order_processor.process_order(article, QUANTITY)
+
+    expect(billing_system_mock.article_name_used).to eq ARTICLE_NAME
+    expect(billing_system_mock.article_price_used).to eq ARTICLE_PRICE
+    expect(billing_system_mock.quantity_used).to eq QUANTITY
+  end
 
   class OrderNumberProviderStub
     def create_order_number
