@@ -10,7 +10,6 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-@Ignore
 public class OrderProcessor2Test {
     private static final String ORDER_NUMBER = "O-123";
     public static final String ARTICLE_NAME = "ARTICLE";
