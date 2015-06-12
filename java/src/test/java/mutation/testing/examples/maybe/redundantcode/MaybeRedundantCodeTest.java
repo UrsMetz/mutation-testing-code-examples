@@ -2,7 +2,6 @@ package mutation.testing.examples.maybe.redundantcode;
 
 import org.junit.Test;
 
-import java.util.HashSet;
 import java.util.TreeSet;
 
 import static java.util.Arrays.asList;
@@ -13,8 +12,8 @@ public class MaybeRedundantCodeTest {
     @Test
     public void test() throws Exception {
         String result = new MaybeRedundantCode()
-            .findWordThatComesAlphabeticallyFirst(
-                new TreeSet(asList("xyz", "abc", "qwertz")));
+                .findWordThatComesAlphabeticallyFirst(
+                        new TreeSet(asList("xyz", "abc", "qwertz")));
         assertThat(result, is("abc"));
     }
 }

@@ -1,10 +1,8 @@
 package mutation.testing.examples.maybe.redundantcode;
 
-import mutation.testing.examples.redundantcode.wordlist.WordList;
-
-import java.util.*;
-
-import static java.util.Arrays.asList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Set;
 
 public class MaybeRedundantCode {
     public String findWordThatComesAlphabeticallyFirst(Set wordList) {
