@@ -12,7 +12,9 @@ import static org.hamcrest.Matchers.is;
 public class MaybeRedundantCodeTest {
     @Test
     public void test() throws Exception {
-        String result = new MaybeRedundantCode().findWordThatComesAlphabeticallyFirst(new TreeSet(asList("xyz", "abc", "qwertz")));
+        String result = new MaybeRedundantCode()
+            .findWordThatComesAlphabeticallyFirst(
+                new TreeSet(asList("xyz", "abc", "qwertz")));
         assertThat(result, is("abc"));
     }
 }
