@@ -1,1 +1,1 @@
-mvn clean test-compile org.pitest:pitest-maven:mutationCoverage -DtargetClasses=mutation.testing.examples.order.processor* -DtargetTests=mutation.testing.examples.order.processor.OrderProcessor1Test* && ./finished.sh
+mvn clean test-compile org.pitest:pitest-maven:mutationCoverage -DtargetClasses=mutation.testing.examples.order.processor* -DtargetTests=mutation.testing.examples.order.processor.OrderProcessorWeakTest* && ./finished.sh
